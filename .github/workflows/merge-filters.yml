@@ -32,7 +32,6 @@ jobs:
           "https://cdn.jsdelivr.net/gh/LucienShui/chinalist@gh-pages/chinalist.txt"
           "https://raw.sevencdn.com/etotakeo/AdGuardDNSPassList/master/DNS-Pass-List"
           "https://cdn.jsdelivr.net/gh/JamesDamp/AdGuard-Home---Personal-Whitelist@master/AdGuardHome-Whitelist.txt"
-          "https://cdn.jsdelivr.net/gh/scarletbane/AdGuard-Home-Whitelist@main/whitelist.txt"
           "https://raw.sevencdn.com/Aveelo/Aveelo-adguard-home-Adlist-Whitelist/master/WhitelistAdGuardHome"
         )
 
