@@ -23,11 +23,8 @@ jobs:
       run: |
         # 定义 URL 列表
         URLS=(
-          "https://cdn.jsdelivr.net/gh/hl2guide/Filterlist-for-AdGuard@master/filter_whitelist.txt"
           "https://cdn.jsdelivr.net/gh/hg1978/AdGuard-Home-Whitelist@master/whitelist.txt"
           "https://cdn.jsdelivr.net/gh/mmotti/adguard-home-filters@master/whitelist.txt"
-          "https://raw.gitmirror.com/mawenjian/china-cdn-domain-whitelist/master/china-top-website-whitelist.txt"
-          "https://raw.gitmirror.com/mawenjian/china-cdn-domain-whitelist/master/china-cdn-domain-whitelist.txt"
           "https://cdn.jsdelivr.net/gh/liwenjie119/adg-rules@master/white.txt"
           "https://cdn.jsdelivr.net/gh/LucienShui/chinalist@gh-pages/chinalist.txt"
           "https://raw.gitmirror.com/etotakeo/AdGuardDNSPassList/master/DNS-Pass-List"
