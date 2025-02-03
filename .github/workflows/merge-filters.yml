@@ -1,0 +1,66 @@
+name: Update and Merge Filter Lists
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 时间 0 点运行
+  workflow_dispatch:     # 允许手动触发
+
+jobs:
+  merge-filters:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Merge and deduplicate lists
+      run: |
+        # 定义 URL 列表
+        URLS=(
+          "https://cdn.jsdelivr.net/gh/hl2guide/Filterlist-for-AdGuard@master/filter_whitelist.txt"
+          "https://cdn.jsdelivr.net/gh/hg1978/AdGuard-Home-Whitelist@master/whitelist.txt"
+          "https://cdn.jsdelivr.net/gh/mmotti/adguard-home-filters@master/whitelist.txt"
+          "https://raw.sevencdn.com/mawenjian/china-cdn-domain-whitelist/master/china-top-website-whitelist.txt"
+          "https://raw.sevencdn.com/mawenjian/china-cdn-domain-whitelist/master/china-cdn-domain-whitelist.txt"
+          "https://raw.sevencdn.com/pluwen/china-domain-allowlist/master/allow-list.sorl"
+          "https://raw.sevencdn.com/entr0pia/SwitchyOmega-Whitelist/master/white-list.sorl"
+          "https://cdn.jsdelivr.net/gh/liwenjie119/adg-rules@master/white.txt"
+          "https://cdn.jsdelivr.net/gh/LucienShui/chinalist@gh-pages/chinalist.txt"
+          "https://raw.sevencdn.com/etotakeo/AdGuardDNSPassList/master/DNS-Pass-List"
+          "https://cdn.jsdelivr.net/gh/JamesDamp/AdGuard-Home---Personal-Whitelist@master/AdGuardHome-Whitelist.txt"
+          "https://cdn.jsdelivr.net/gh/scarletbane/AdGuard-Home-Whitelist@main/whitelist.txt"
+          "https://raw.sevencdn.com/Aveelo/Aveelo-adguard-home-Adlist-Whitelist/master/WhitelistAdGuardHome"
+        )
+
+        # 创建临时目录
+        mkdir -p tmp
+
+        # 下载并合并文件
+        for url in "${URLS[@]}"; do
+          echo "Processing $url"
+          curl -sSfL "$url" >> tmp/combined.txt || echo "Failed to download $url"
+        done
+
+        # 去重处理（保留原始顺序）
+        awk '!seen[$0]++' tmp/combined.txt > merged_whitelist.txt
+
+        # 清理临时文件
+        rm -rf tmp
+
+        # 检查文件变更
+        if git diff --quiet --exit-code merged_whitelist.txt; then
+          echo "No changes detected"
+        else
+          echo "Changes detected, committing..."
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add merged_whitelist.txt
+          git commit -m "Update merged whitelist $(date +'%Y-%m-%d')"
+          git push
+        fi
+
+    - name: Upload merged file
+      uses: actions/upload-artifact@v3
+      with:
+        name: merged-whitelist
+        path: merged_whitelist.txt
