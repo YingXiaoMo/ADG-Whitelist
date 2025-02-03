@@ -26,13 +26,13 @@ jobs:
           "https://cdn.jsdelivr.net/gh/hl2guide/Filterlist-for-AdGuard@master/filter_whitelist.txt"
           "https://cdn.jsdelivr.net/gh/hg1978/AdGuard-Home-Whitelist@master/whitelist.txt"
           "https://cdn.jsdelivr.net/gh/mmotti/adguard-home-filters@master/whitelist.txt"
-          "https://raw.sevencdn.com/mawenjian/china-cdn-domain-whitelist/master/china-top-website-whitelist.txt"
-          "https://raw.sevencdn.com/mawenjian/china-cdn-domain-whitelist/master/china-cdn-domain-whitelist.txt"
+          "https://raw.gitmirror.com/mawenjian/china-cdn-domain-whitelist/master/china-top-website-whitelist.txt"
+          "https://raw.gitmirror.com/mawenjian/china-cdn-domain-whitelist/master/china-cdn-domain-whitelist.txt"
           "https://cdn.jsdelivr.net/gh/liwenjie119/adg-rules@master/white.txt"
           "https://cdn.jsdelivr.net/gh/LucienShui/chinalist@gh-pages/chinalist.txt"
-          "https://raw.sevencdn.com/etotakeo/AdGuardDNSPassList/master/DNS-Pass-List"
+          "https://raw.gitmirror.com/etotakeo/AdGuardDNSPassList/master/DNS-Pass-List"
           "https://cdn.jsdelivr.net/gh/JamesDamp/AdGuard-Home---Personal-Whitelist@master/AdGuardHome-Whitelist.txt"
-          "https://raw.sevencdn.com/Aveelo/Aveelo-adguard-home-Adlist-Whitelist/master/WhitelistAdGuardHome"
+          "https://raw.gitmirror.com/Aveelo/Aveelo-adguard-home-Adlist-Whitelist/master/WhitelistAdGuardHome"
         )
 
         # 创建临时目录
